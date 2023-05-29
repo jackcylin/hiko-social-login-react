@@ -1,9 +1,9 @@
 {
-  "name": "hiko-social-login-react",
+  "name": "jackcylin/hiko-social-login-react",
   "engines": {
     "node": ">=14"
   },
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "HIKO Social Login react for Hydrogen integration",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,17 @@
     "Hydrogen",
     "ReactJS"
   ],
-  "author": "HIKO Software",
+  "author": {
+    "name": "Jack",
+    "email": "jackcylin@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jackcylin/hiko-social-login-react.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/jackcylin"
+  },
   "license": "ISC",
   "dependencies": {
     "react": "^16.0.0"
