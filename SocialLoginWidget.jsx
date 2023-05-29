@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useEffect } from "react";
 
 export function SocialLoginWidget({
     shop,
+    publicAccessToken,
     baseUrl = "https://apps.hiko.link",
     path = "/js/hiko-auth-headless.js",
 }) {
@@ -21,7 +22,7 @@ export function SocialLoginWidget({
 
     useEffect(() => {
         createScript(document, baseUrl, path).then(() => {
-            if (shop) window.HIKO.render(shop, container.current);
+            if (shop) window.HIKO.render(shop, container.current, publicAccessToken);
         });
     }, [path]);
 
