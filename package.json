@@ -1,0 +1,28 @@
+{
+  "name": "hiko-social-login-react",
+  "engines": {
+    "node": ">=14"
+  },
+  "version": "0.0.1",
+  "description": "HIKO Social Login react for Hydrogen integration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "HIKO",
+    "social",
+    "login",
+    "Shopify",
+    "Hydrogen",
+    "ReactJS"
+  ],
+  "author": "HIKO Software",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.41.0"
+  }
+}
