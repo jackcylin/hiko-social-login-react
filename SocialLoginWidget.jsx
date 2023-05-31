@@ -1,30 +1,47 @@
-import React, { useCallback, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
+const DEFAULT_PATH = "/js/hiko-auth-headless.js";
 
 export function SocialLoginWidget({
-    shop,
-    publicAccessToken,
-    baseUrl = "https://apps.hiko.link",
-    path = "/js/hiko-auth-headless.js",
+  shop,
+  publicAccessToken,
+  logout,
+  refresh,
+  baseUrl = "https://apps.hiko.link",
 }) {
-    const container = useRef();
+  const container = useRef();
+  const [path, setPath] = useState(DEFAULT_PATH);
 
-    const createScript = useCallback((document, baseUrl, path) => {
-        if (document.querySelector(`script[src*="${path}"]`)) return Promise.resolve();
+  useEffect(() => {
+    if (!document.querySelector(`script[src*="${path}"]`)) {
+      const script = document.createElement("script");
+      script.src = `${baseUrl}${path}`;
+      script.async = "async";
+      script.onload = () =>
+        window.HIKO.render(container.current, shop, publicAccessToken);
+      document.head.appendChild(script);
+    } else {
+      window.HIKO.render(container.current, shop, publicAccessToken);
+    }
+  }, [path]);
 
-        return new Promise((resolve) => {
-            let script = document.createElement("script");
-            script.src = `${baseUrl}${path}`;
-            script.async = "async";
-            document.head.appendChild(script);
-            script.onload = resolve;
-        });
+  useEffect(() => {
+    logout(() => {
+      window.HIKO.customer = undefined;
+      window.HIKO.render(container.current, shop, publicAccessToken);
     });
+  }, [logout]);
 
-    useEffect(() => {
-        createScript(document, baseUrl, path).then(() => {
-            if (shop) window.HIKO.render(shop, container.current, publicAccessToken);
-        });
-    }, [path]);
+  useEffect(() => {
+    refresh(() => {
+      const found = document.querySelector(`script[src*="${path}"]`);
+      if (found) {
+        found.remove();
+        window.HIKO.release();
+        setPath(`${DEFAULT_PATH}?t=${Date.now()}`);
+      }
+    });
+  }, [refresh]);
 
-    return <div ref={container}></div>;
+  return <div ref={container}></div>;
 }
