@@ -26,10 +26,8 @@
     "url": "git@github.com:jackcylin/hiko-social-login-react.git"
   },
   "license": "ISC",
-  "dependencies": {
-    "react": "^16.0.0"
-  },
   "devDependencies": {
+    "react": "^16.0.0",
     "eslint": "^8.41.0",
     "eslint-plugin-react": "^7.32.2"
   }

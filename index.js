@@ -1,1 +1,2 @@
-export  { SocialLoginWidget } from "./SocialLoginWidget";
+export { SocialLoginWidget } from "./SocialLoginWidget";
+export { Demo } from "./Demo";
