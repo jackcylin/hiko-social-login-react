@@ -2,8 +2,7 @@
 
  - [HIKO Social Login](https://apps.shopify.com/simple-social-login) is a Shopify social login app. 
  - The module provides a React component [SocialLoginWidget](https://github.com/jackcylin/hiko-social-login-react/blob/main/SocialLoginWidget.jsx) and sample codes to integrate with Hydrogen app.
- - Hydrogen app integration is a feature included in the Premium plan of [HIKO Social Login](https://apps.shopify.com/simple-social-login) 
-
+ 
 ## Installation
 
 ```shell
