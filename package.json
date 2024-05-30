@@ -1,34 +1,41 @@
 {
-  "name": "hiko-social-login-react",
-  "engines": {
-    "node": ">=14"
-  },
-  "version": "1.2.1",
-  "description": "HIKO Social Login react for Hydrogen integration",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "HIKO",
-    "social",
-    "login",
-    "Shopify",
-    "Hydrogen",
-    "ReactJS"
-  ],
-  "author": {
-    "name": "Jack",
-    "email": "jackcylin@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:jackcylin/hiko-social-login-react.git"
-  },
-  "license": "ISC",
-  "devDependencies": {
-    "react": "^16.0.0",
-    "eslint": "^8.41.0",
-    "eslint-plugin-react": "^7.32.2"
-  }
+    "name": "hiko-social-login-react",
+    "engines": {
+        "node": ">=14"
+    },
+    "version": "1.3.0",
+    "description": "HIKO Social Login react for Hydrogen integration",
+    "main": "./dist/index.js",
+    "scripts": {
+        "build": "tsup"
+    },
+    "keywords": [
+        "HIKO",
+        "social",
+        "login",
+        "Shopify",
+        "Hydrogen",
+        "ReactJS"
+    ],
+    "author": {
+        "name": "HIKO Software",
+        "email": "support@hiko.link"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:jackcylin/hiko-social-login-react.git"
+    },
+    "license": "ISC",
+    "devDependencies": {
+        "@types/react": "^18.3.3",
+        "eslint": "^8.41.0",
+        "eslint-plugin-react": "^7.32.2",
+        "prettier": "^3.2.5",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "ts-node": "^10.9.2",
+        "tsup": "^8.0.2",
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {}
 }

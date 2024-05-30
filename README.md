@@ -1,8 +1,8 @@
 # hiko-social-login-react
 
- - [HIKO Social Login](https://apps.shopify.com/simple-social-login) is a Shopify social login app. 
- - The module provides a React component [SocialLoginWidget](https://github.com/jackcylin/hiko-social-login-react/blob/main/SocialLoginWidget.jsx) and sample codes to integrate with Hydrogen app.
- 
+-   [HIKO Social Login](https://apps.shopify.com/simple-social-login) is a Shopify social login app.
+-   The module provides a React component [SocialLoginWidget](https://github.com/jackcylin/hiko-social-login-react/blob/main/SocialLoginWidget.jsx) and sample codes to integrate with Hydrogen app.
+
 ## Installation
 
 ```shell
@@ -19,7 +19,7 @@ const shop = "xxxx.myshopify.com";
 const [customer, setCustomer] = useState(window.HIKO?.customer);
 
 const handleCustomEvents = useCallback((event) => {
-    if (["login", "activate", "multipass"].includes(event.detail.action)) 
+    if (["login", "activate", "multipass"].includes(event.detail.action))
         setCustomer(event.detail.customer);
 }, []);
 
@@ -28,21 +28,21 @@ useEffect(() => {
     return () => document.removeEventListener("hiko", handleCustomEvents);
 }, []);
 
-if (customer) 
-    return (<ul>
-                {Object.keys(customer).map((key) => (
-                    <li key={key}>
-                        {key}: {customer[key]}
-                    </li>
-                ))}
-    </ul>);
-    
-return (<SocialLoginWidget shop={shop} publicAccessToken={publicAccessToken}
-    ></SocialLoginWidget>);
+if (customer)
+    return (
+        <ul>
+            {Object.keys(customer).map((key) => (
+                <li key={key}>
+                    {key}: {customer[key]}
+                </li>
+            ))}
+        </ul>
+    );
 
+return <SocialLoginWidget shop={shop} publicAccessToken={publicAccessToken}></SocialLoginWidget>;
 ```
 
 ### Note:
- - full sample [Demo.jsx](https://github.com/jackcylin/hiko-social-login-react/blob/main/Demo.jsx)
- - Install [Headless](https://apps.shopify.com/headless) to generate publicAccessToken
 
+-   full sample [Demo.jsx](https://github.com/jackcylin/hiko-social-login-react/blob/main/Demo.jsx)
+-   Install [Headless](https://apps.shopify.com/headless) to generate publicAccessToken

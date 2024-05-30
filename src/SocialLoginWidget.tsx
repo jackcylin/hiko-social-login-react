@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const DEFAULT_PATH = "/js/hiko-auth-headless.js";
 
@@ -8,6 +8,12 @@ export function SocialLoginWidget({
     logout,
     refresh,
     baseUrl,
+}: {
+    shop: string;
+    publicAccessToken: string;
+    logout: void;
+    refresh: void;
+    baseUrl: string;
 }) {
     const container = useRef();
     const [path, setPath] = useState(DEFAULT_PATH);

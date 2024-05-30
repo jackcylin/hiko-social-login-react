@@ -1,26 +1,38 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect, useCallback, useRef } from "react";
-import { SocialLoginWidget } from "hiko-social-login-react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { SocialLoginWidget } from "./SocialLoginWidget";
 import "./demo.css";
+
+// declare global {
+//   interface Window {
+//       HIKO: any;
+//   }
+// }
+
+// declare function Callback: () => void;
 
 export function Demo({
   shop,
   publicAccessToken,
   baseUrl = "https://apps.hiko.link",
+}: {
+  shop: string;
+  publicAccessToken: string;
+  baseUrl: string;
 }) {
   const logoutCallbackRef = useRef();
   const refreshCallbackRef = useRef();
   const [customer, setCustomer] = useState(window.HIKO?.customer);
 
-  const logout = useCallback((callback) => {
+  const logout = useCallback((callback: any) => {
     logoutCallbackRef.current = callback;
   }, []);
 
-  const refresh = useCallback((callback) => {
+  const refresh = useCallback((callback: any) => {
     refreshCallbackRef.current = callback;
   }, []);
 
-  const handleCustomEvents = useCallback((event) => {
+  const handleCustomEvents = useCallback((event: any) => {
     console.info(`catch event: ${JSON.stringify(event.detail, null, "  ")}`);
 
     if (["login", "activate", "multipass"].includes(event.detail.action))
@@ -59,7 +71,7 @@ export function Demo({
         window.HIKO.customer = value;
       })
       .catch((err) => console.error(err.message));
-  });
+  }, []);
 
   useEffect(() => {
     document.addEventListener("hiko", handleCustomEvents);
