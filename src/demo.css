@@ -16,7 +16,7 @@
     margin-top: 20px;
 }
 
-.panel > button {
+.panel>button {
     background-color: white;
     padding: 15px 32px;
     text-align: center;
@@ -29,7 +29,7 @@
     border: 1px solid grey;
 }
 
-.panel > button:hover {
+.panel>button:hover {
     background-color: #e7e7e7;
     color: black;
 }

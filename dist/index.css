@@ -1,33 +1,33 @@
 /* src/demo.css */
 .main {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .widget {
-    border-radius: 6px;
-    background-color: white;
-    border: 1px solid black;
-    padding: 20px 20px 20px 20px;
+  border-radius: 6px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px 20px 20px 20px;
 }
 .panel {
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
 }
 .panel > button {
-    background-color: white;
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    margin: 4px 2px;
-    cursor: pointer;
-    border: none;
-    transition-duration: 0.2s;
-    border-radius: 6px;
-    border: 1px solid grey;
+  background-color: white;
+  padding: 15px 32px;
+  text-align: center;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: none;
+  transition-duration: 0.2s;
+  border-radius: 6px;
+  border: 1px solid grey;
 }
 .panel > button:hover {
-    background-color: #e7e7e7;
-    color: black;
+  background-color: #e7e7e7;
+  color: black;
 }
 /*# sourceMappingURL=index.css.map */

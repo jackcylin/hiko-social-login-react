@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const DEFAULT_PATH = "/js/hiko-auth-headless.js";
 
@@ -11,19 +11,20 @@ export function SocialLoginWidget({
 }: {
     shop: string;
     publicAccessToken: string;
-    logout: void;
-    refresh: void;
+    logout: Function;
+    refresh: Function;
     baseUrl: string;
 }) {
-    const container = useRef();
+    const container = useRef<HTMLInputElement>(null);
     const [path, setPath] = useState(DEFAULT_PATH);
 
     useEffect(() => {
         if (!document.querySelector(`script[src*="${path}"]`)) {
             const script = document.createElement("script");
             script.src = `${baseUrl}${path}`;
-            script.async = "async";
-            script.onload = () => window.HIKO.render(container.current, shop, publicAccessToken);
+            script.async = true;
+            script.onload = () =>
+                window.HIKO.render(container.current, shop, publicAccessToken);
             document.head.appendChild(script);
         } else {
             window.HIKO.render(container.current, shop, publicAccessToken);
