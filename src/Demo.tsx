@@ -76,7 +76,7 @@ export function Demo({
                 window.HIKO.customer = value;
             })
             .catch((err) => console.error(err.message));
-    }, []);
+    }, [customer]);
 
     useEffect(() => {
         document.addEventListener("hiko", handleCustomEvents);

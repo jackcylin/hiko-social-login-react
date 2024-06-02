@@ -26,8 +26,6 @@ export function SocialLoginWidget({
             script.onload = () =>
                 window.HIKO.render(container.current, shop, publicAccessToken);
             document.head.appendChild(script);
-        } else {
-            window.HIKO.render(container.current, shop, publicAccessToken);
         }
     }, [path]);
 

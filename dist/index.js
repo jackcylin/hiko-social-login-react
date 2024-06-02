@@ -3176,8 +3176,6 @@ function SocialLoginWidget({
       script.async = true;
       script.onload = () => window.HIKO.render(container.current, shop, publicAccessToken);
       document.head.appendChild(script);
-    } else {
-      window.HIKO.render(container.current, shop, publicAccessToken);
     }
   }, [path]);
   (0, import_react.useEffect)(() => {
@@ -3220,14 +3218,10 @@ function Demo({
     console.info(
       `catch event: ${JSON.stringify(event.detail, null, "  ")}`
     );
-    if (["login", "activate", "multipass"].includes(
-      event.detail.action
-    ))
+    if (["login", "activate", "multipass"].includes(event.detail.action))
       setCustomer(event.detail.customer);
     else if (event.detail.action !== "click")
-      console.error(
-        `unhandled action ${event.detail.action}`
-      );
+      console.error(`unhandled action ${event.detail.action}`);
   }, []);
   const getCustomerDetail = (0, import_react2.useCallback)(() => {
     fetch(`https://${shop}/api/2023-04/graphql.json`, {
@@ -3259,13 +3253,10 @@ function Demo({
       setCustomer(value);
       window.HIKO.customer = value;
     }).catch((err) => console.error(err.message));
-  }, []);
+  }, [customer]);
   (0, import_react2.useEffect)(() => {
     document.addEventListener("hiko", handleCustomEvents);
-    return () => document.removeEventListener(
-      "hiko",
-      handleCustomEvents
-    );
+    return () => document.removeEventListener("hiko", handleCustomEvents);
   }, []);
   return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "main", children: [
     /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "widget", children: [
@@ -3279,14 +3270,11 @@ function Demo({
           baseUrl
         }
       ),
-      customer ? /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("ul", { children: Object.keys(customer).map(
-        (key) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("li", { children: [
-          key,
-          ":",
-          " ",
-          customer[key]
-        ] }, key)
-      ) }) : null
+      customer ? /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("ul", { children: Object.keys(customer).map((key) => /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("li", { children: [
+        key,
+        ": ",
+        customer[key]
+      ] }, key)) }) : null
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "panel", children: [
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
@@ -3310,13 +3298,7 @@ function Demo({
             children: "Logout"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-          "button",
-          {
-            onClick: () => getCustomerDetail(),
-            children: "Customer detail"
-          }
-        )
+        /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("button", { onClick: () => getCustomerDetail(), children: "Customer detail" })
       ] }) : null
     ] })
   ] });
