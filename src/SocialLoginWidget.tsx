@@ -27,16 +27,12 @@ export function SocialLoginWidget({
                 window.HIKO.render(container.current, shop, publicAccessToken);
             document.head.appendChild(script);
         }
-    }, [path]);
 
-    useEffect(() => {
         logout(() => {
             window.HIKO.logout();
             window.HIKO.render(container.current, shop, publicAccessToken);
         });
-    }, [logout]);
 
-    useEffect(() => {
         refresh(() => {
             const found = document.querySelector(`script[src*="${path}"]`);
             if (found) {
@@ -45,7 +41,7 @@ export function SocialLoginWidget({
                 setPath(`${DEFAULT_PATH}?t=${Date.now()}`);
             }
         });
-    }, [refresh]);
+    }, []);
 
     return <div ref={container}></div>;
 }

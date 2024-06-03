@@ -1,15 +1,6 @@
-// eslint-disable-next-line no-unused-vars
 import { useState, useEffect, useCallback, useRef } from "react";
 import { SocialLoginWidget } from "./SocialLoginWidget";
 import "./demo.css";
-
-// declare global {
-//   interface Window {
-//       HIKO: any;
-//   }
-// }
-
-// declare function Callback: () => void;
 
 export function Demo({
     shop,
@@ -23,14 +14,6 @@ export function Demo({
     const logoutCallbackRef = useRef<(() => void) | null>(null);
     const refreshCallbackRef = useRef<(() => void) | null>(null);
     const [customer, setCustomer] = useState(window.HIKO?.customer);
-
-    const logout = useCallback((callback: () => void) => {
-        logoutCallbackRef.current = callback;
-    }, []);
-
-    const refresh = useCallback((callback: () => void) => {
-        refreshCallbackRef.current = callback;
-    }, []);
 
     const handleCustomEvents = useCallback((event: any) => {
         console.info(
@@ -83,6 +66,15 @@ export function Demo({
         return () => document.removeEventListener("hiko", handleCustomEvents);
     }, []);
 
+
+    const logout = (callback: () => void) => {
+        logoutCallbackRef.current = callback;
+    };
+
+    const refresh = (callback: () => void) => {
+        refreshCallbackRef.current = callback;
+    };
+
     return (
         <div className="main">
             <div className="widget">
@@ -94,15 +86,7 @@ export function Demo({
                     baseUrl={baseUrl}
                 ></SocialLoginWidget>
 
-                {customer ? (
-                    <ul>
-                        {Object.keys(customer).map((key) => (
-                            <li key={key}>
-                                {key}: {customer[key]}
-                            </li>
-                        ))}
-                    </ul>
-                ) : null}
+                <ShowCustomer customer={customer} />
             </div>
 
             <div className="panel">
@@ -119,8 +103,10 @@ export function Demo({
                     <>
                         <button
                             onClick={() => {
-                                if (logoutCallbackRef.current)
+                                if (logoutCallbackRef.current) {
                                     logoutCallbackRef.current();
+                                    setCustomer(null);
+                                }
                             }}
                         >
                             Logout
@@ -133,5 +119,18 @@ export function Demo({
                 ) : null}
             </div>
         </div>
+    );
+}
+
+function ShowCustomer({ customer }: { customer: any }) {
+    if (!customer) return <></>;
+    return (
+        <ul>
+            {Object.keys(customer).map((key) => (
+                <li key={key}>
+                    {key}: {customer[key]}
+                </li>
+            ))}
+        </ul>
     );
 }

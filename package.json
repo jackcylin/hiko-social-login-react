@@ -27,6 +27,9 @@
         "url": "git@github.com:jackcylin/hiko-social-login-react.git"
     },
     "license": "ISC",
+    "peerDependencies": {
+        "react": "^17 || ^18"
+    },
     "devDependencies": {
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
