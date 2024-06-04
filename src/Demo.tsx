@@ -36,16 +36,14 @@ export function Demo({
             body: `query {
                 customer(customerAccessToken: "${customer.accessToken}") { 
                     id
+                    displayName
                     firstName
                     lastName
                     acceptsMarketing
                     phone
                     email
-                    tags 
-                    metafields(identifiers: []) {
-                        id
-                        value
-                    }
+                    createdAt
+                    updatedAt
                 }
             }`,
         })
