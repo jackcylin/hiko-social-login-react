@@ -44,5 +44,5 @@ return <SocialLoginWidget shop={shop} publicAccessToken={publicAccessToken}></So
 
 ### Note:
 
--   full sample [Demo.jsx](https://github.com/jackcylin/hiko-social-login-react/blob/main/Demo.jsx)
+-   full sample [Demo.jsx](https://github.com/jackcylin/hiko-social-login-react/blob/main/src/Demo.tsx)
 -   Install [Headless](https://apps.shopify.com/headless) to generate publicAccessToken
